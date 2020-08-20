@@ -1,0 +1,36 @@
+{% extends "saas/layout.html" %}
+{% load static %}
+{% block body %}
+
+<div class="bg-white rounded-lg p-5 shadow">
+    <h1>Sprint!</h1>
+<br />
+<p>Time to get down to business. Focus 5 minutes on the task and get it done!</p>
+
+
+<div class="progress mx-auto" data-value='100'>
+    <span class="progress-left">
+                  <span class="progress-bar border-primary"></span>
+    </span>
+    <span class="progress-right">
+                  <span class="progress-bar border-primary"></span>
+    </span>
+    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+      <div id="countdown" class="h2 font-weight-bold">4:59</div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-info" onClick="document.location.reload(true)">Restart Sprint</button>
+
+  {% if task.id %}
+  <button type="button" class="btn btn-info" onClick="complete('{{task.id}}')">Mark Task Complete</button>
+  {%endif%}
+</div>
+
+
+
+{% block script %}
+    <script src="{% static 'saas/index.js' %}"></script>
+{% endblock %}
+
+{% endblock %}

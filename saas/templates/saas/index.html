@@ -1,0 +1,57 @@
+{% extends "saas/layout.html" %}
+{% load static %}
+{% block body %}
+
+
+{% if user.is_authenticated %}
+<div class="bg-white rounded-lg p-5 shadow">
+<h2>Hello, {{user}}! Nice to have you here.</h2>
+{%else%}
+<div class="bg-white rounded-lg p-5 shadow">
+<h2>Hello! Nice to have you here.</h2>
+{%endif%}
+
+
+{% if tasks.all %}
+Your active tasks:
+{% for task in tasks %}
+{% if task.is_completed != True %}
+  <div class="task">
+  
+  <p class="text-dark">
+    
+    <i id={{task.id}} onclick="complete('{{task.id}}')" onmouseover="make_box_green_on_hover(this)" onmouseout="normal_color_box(this)" style=color:grey; class="far fa-check-square"></i>
+  {{task.content}}
+by
+  {{task.deadline}}
+</p>
+<p class="text-dark">
+  <a href="{%url 'edit' task.id %}"><i class="fas fa-pencil-alt"></i>Edit</a>
+  <a href="{%url 'sprint' task.id %}"><i class="fas fa-running"></i>Start Sprint</a>
+  {%if task.attachment%}
+  <a href="{%url 'download' task.attachment.url %}" class="btn btn-dark">Download attachment</a>
+  {%endif%}
+  </p>
+  </div>
+{%endif%}
+{%endfor%}
+</div>
+
+{% else %}
+
+Your tasks:
+<p>
+  You are all caught up!
+</p>
+</div>
+{% endif %}
+
+{% block script %}
+    <script src="{% static 'saas/index.js' %}"></script>
+{% endblock %}
+
+
+
+
+{% endblock %}
+
