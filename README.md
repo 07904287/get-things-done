@@ -1,4 +1,7 @@
-Given how much I procrastinated instead of deciding on a final project, I decided to write a web app that helps productivity.
+![Screenshot of homepage](https://github.com/ricardobayes/get-things-done/blob/master/Screenshot%20from%202020-08-14%2012-45-26.png)
+
+
+Given how much I procrastinated instead of deciding on a final project for CS50, I decided to write a web app that helps productivity.
 Therefore, "Get things done", an easy-to-use web app was brought to life.
 It's key features:
 - Add and edit things that you need or want to do
